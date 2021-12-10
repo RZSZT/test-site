@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" href="/static/glitchportal_app/style.css">
+    <title>GlitchPortal</title>
+</head>
+
+<body>
+    <div>
+        <img src="/static/glitchportal_app/gp.png" alt="Glitch Portal Logo" width="684" height="70" />
+    </div>
+    <div class="page_links">
+        <table>
+            <tr>
+                <td><a href="{% url 'home' %}">Home</a></td>
+                <td><a href="{% url 'ascii_image' %}">ASCII Image</a></td>
+                <td><a href="{% url 'ascii_gif' %}">ASCII GIF</a></td>
+                <td><a href="{% url 'about' %}">About</a></td>
+            </tr>
+        </table>
+    </div>
+    {% block content %}
+    
+    
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+{% extends 'glitchportal_app/base.html' %}
+
+{% load static %}
+
+{% block body %}
+
+<canvas id="myCanvas" width="480" height="320"></canvas>
+
+<script>
+        // Progress visualizer
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        var xStart = 20;
+        var xEnd = canvas.width-20;
+        var xCurrent = 20
+        var yStart = 50;
+        var yWidth = 100;
+        var xWidth = xEnd - xStart;
+        var percent = 0;
+        
+        
+        function drawProgress() {
+            ctx.beginPath();
+            ctx.rect(xStart, yStart, xCurrent,  yWidth);
+            ctx.fillStyle = "#0095DD";
+            ctx.fill();
+            ctx.closePath();
+        }
+        
+        function drawPercent() {
+            if (percent > 55) {
+                colour = "#000000";
+            } else {
+                colour = "#0095DD";
+            }
+            ctx.font = "16px Arial";
+            ctx.fillStyle = colour;
+            ctx.fillText(percent + "%", 70, canvas.width/2);
+        }
+        
+        function checkJSON() {
+            var myProgress = File("{{ foldername }}/progress.json");
+            if (myProgress.exists()) {
+                var rawJSON = fetch("{{ foldername }}/progress.json");
+                var objJSON = rawJSON.json();
+                percent = objJSON["percent"];
+                var convertedPercentage = Math.floor((percent /  100) * xWidth);
+                xCurrent = 20 + convertedPercentage;
+            }
+            return xCurrent, percent;
+        }
+        
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawProgress();
+            drawPercent();
+            xCurrent, percent = checkJSON();
+            requestAnimationFrame(draw);
+            
+        }
+        
+        draw();
+</script>
+
+            
+        
+{% endblock %}        

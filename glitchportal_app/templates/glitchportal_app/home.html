@@ -1,0 +1,16 @@
+{% extends 'glitchportal_app/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<table class="link_images">
+    <tr>
+        <td><a href="{% url 'ascii_image' %}"><img src="/static/glitchportal_app/ascii_image.jpeg" width="344" height="344"></a></td>
+        <td><a href="{% url 'ascii_gif' %}"><img src="/static/glitchportal_app/ascii_gif.gif" width="344" height="344"></a></td>
+    </tr>
+    <tr>
+        <td><a href="{% url 'ascii_image' %}">Create an ASCII image</a></td>
+        <td><a href="{% url 'ascii_gif' %}">Create an ASCII GIF</a></td>
+    </tr>
+</table>
+{% endblock %}

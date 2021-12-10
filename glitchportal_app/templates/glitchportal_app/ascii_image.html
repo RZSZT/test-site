@@ -1,0 +1,19 @@
+{% extends 'glitchportal_app/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="upload_image">
+    <h2>Image upload</h2>
+</div>
+<div class="enter_text">
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p><input type="file" name="filename"></p>
+        <p><input type="submit" value="Submit"></p>
+    </form>
+</div>
+
+{% endblock %}
+

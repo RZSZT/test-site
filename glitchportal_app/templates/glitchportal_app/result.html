@@ -1,0 +1,13 @@
+{% extends 'glitchportal_app/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<table class="link_images">
+    <tr>
+        <td><img src="{% static '' %}{{ filename }}" /></td>
+    </tr>
+</table>
+
+{% endblock %}
